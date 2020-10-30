@@ -37,3 +37,20 @@ $('#form-reg').on('submit',function(e) {
         }
     })
 })
+
+$('#form_login').submit(function(e) {
+    e.preventDefault()
+    $.ajax({
+      url: 'http://ajax.frontend.itheima.net/api/login',
+      method: 'POST',
+      data: $(this).serialize(),
+      success: function(res) {
+        if (res.status !== 0) {
+          return layer.msg('登录失败！')
+        }
+        layer.msg('登录成功！')
+        localStorage.setItem('token', res.token)
+        location.href = '/index.html'
+      }
+    })
+})
