@@ -27,3 +27,30 @@ body {
 .reg-box {
     display: none;
 }
+
+.layui-form-padding {
+    padding: 0 32px;
+}
+
+.loginBtn-go-to-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.loginBtn-go-to-right a {
+    font-size: 12px;
+}
+
+.layui-form-item {
+    position: relative;
+}
+
+.icon-in-input {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.layui-input {
+    padding-left: 32px;
+}
