@@ -16,3 +16,24 @@ form.verify({
         if (value !== pwd) return '两次密码不一致'
     }
 })
+//注册账号
+let layer = layui.layer;
+$('#form-reg').on('submit',function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: 'http://ajax.frontend.itheima.net/api/reguser',
+        data: {
+            username: $('#form-reg [name=username]').val(),
+            password: $('#form-reg [name=password]').val()
+        },
+        success(res) {
+            if(res.status !== 0) return layer.msg(res.message);
+
+            layer.msg('注册成功，请登录');
+
+            $('#reg-box').click();
+
+        }
+    })
+})
