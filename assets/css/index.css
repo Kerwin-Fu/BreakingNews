@@ -8,3 +8,7 @@
     text-align: center;
     font-size: 12px;
   }
+
+  .layui-nav-tree .layui-nav-child dd {
+      padding-left: 20px;
+  }
