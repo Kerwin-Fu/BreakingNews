@@ -22,7 +22,7 @@ $('#form-reg').on('submit',function(e) {
     e.preventDefault();
     $.ajax({
         type: 'POST',
-        url: 'http://ajax.frontend.itheima.net/api/reguser',
+        url: '/api/reguser',
         data: {
             username: $('#form-reg [name=username]').val(),
             password: $('#form-reg [name=password]').val()
@@ -38,10 +38,10 @@ $('#form-reg').on('submit',function(e) {
     })
 })
 
-$('#form_login').submit(function(e) {
+$('#form-login').submit(function(e) {
     e.preventDefault()
     $.ajax({
-      url: 'http://ajax.frontend.itheima.net/api/login',
+      url: '/api/login',
       method: 'POST',
       data: $(this).serialize(),
       success: function(res) {
