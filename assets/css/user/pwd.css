@@ -5,6 +5,10 @@ body {
 }
 
 body {
-  background-color: #f2f3f5;
+  background-color:#f2f3f5;
   padding: 15px;
+}
+
+.layui-form {
+    width: 500px;
 }
