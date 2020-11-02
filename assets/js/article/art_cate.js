@@ -11,6 +11,7 @@ function initArtCateList() {
         }
     })
 }
+// 添加分类功能
 let indexAdd = '';
 $('#btnAddCate').on('click', function () {
     indexAdd = layui.layer.open({
@@ -39,8 +40,10 @@ $('body').on('submit', '#form-add', function (e) {
     })
 })
 
+// 编辑分类功能
+let indexEdit = ''
 $('tbody').on('click', '.btn-edit', function () {
-    layui.layer.open({
+    indexEdit = layui.layer.open({
         type: 1,
         area: ['500px', '250px'],
         title: '修改文章分类',
@@ -55,5 +58,42 @@ $('tbody').on('click', '.btn-edit', function () {
         success: function (res) {
             layui.form.val('form-edit', res.data)
         }
+    })
+})
+
+$('body').on('submit','#form-edit', function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '/my/article/updatecate',
+        data: $(this).serialize(),
+        success(res) {
+            if (res.status !== 0) {
+                return layer.msg('更新分类数据失败！')
+            }
+            layui.layer.msg('更新分类数据成功！')
+            layui.layer.close(indexEdit)
+            initArtCateList()
+
+        }
+    })
+})
+
+// 删除功能
+$('tbody').on('click', '.btn-delete', function () {
+    let id = $(this).attr('data-id')
+    layer.confirm('确认删除?', { icon: 3, title: '提示' }, function (index) {
+        $.ajax({
+            method: 'GET',
+            url: '/my/article/deletecate/' + id,
+            success: function (res) {
+                if (res.status !== 0) {
+                    return layer.msg('删除分类失败！')
+                }
+                layer.msg('删除分类成功！')
+                layer.close(index)
+                initArtCateList()
+            }
+        })
     })
 })
