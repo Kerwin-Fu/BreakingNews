@@ -35,10 +35,18 @@
         </div>
     </div>
 
+    <script type="text/html" id="tpl-cate">
+        <option value="">请选择文章类别</option>
+        {{each data}}
+        <option value="{{$value.Id}}">{{$value.name}}</option>
+        {{/each}}
+      </script>
+
     <!-- 导入第三方的 JS 插件 -->
     <script src="/assets/lib/layui/layui.all.js"></script>
     <script src="/assets/lib/jquery.js"></script>
     <script src="/assets/js/prefilter.js"></script>
+    <script src="/assets/lib/template-web.js"></script>
     <!-- 导入自己的 JS -->
     <script src="/assets/js/article/art_pub.js"></script>
 </body>
