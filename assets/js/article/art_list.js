@@ -122,6 +122,7 @@ $(function () {
     //文章删除功能
     $('tbody').on('click','.btn-delete',function() {
         let id = $(this).attr('data-id');
+        let len = $('.btn-delete').length;
         layer.confirm('确认删除?', { icon: 3, title: '提示' }, function(index) {
             $.ajax({
                 type: 'GET',
@@ -129,6 +130,10 @@ $(function () {
                 success(res) {
                     if(res.status !== 0) return layer.msg('删除文章失败')
                     layer.msg('删除文章成功')
+                    if(len === 1) {
+                        q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1
+                    }
+
                     initTable()
                 }
             })
